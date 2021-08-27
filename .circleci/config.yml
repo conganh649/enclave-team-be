@@ -13,6 +13,12 @@ jobs:
           name: Install npm dependencies
           command: |
             yarn --ignore-engines
+      - run:
+          name: build
+          command: yarn build
+      - run:
+          name: test
+          command: yarn test
 
   deploy:
     executor: heroku/default
