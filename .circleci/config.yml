@@ -14,9 +14,6 @@ jobs:
           command: |
             yarn --ignore-engines
       - run:
-          name: build
-          command: yarn build
-      - run:
           name: test
           command: yarn test
 
@@ -33,6 +30,8 @@ workflows:
     jobs:
       - run_tests
   heroku_deploy:
+    requires:
+      - build_test
     jobs:
       - deploy:
           filters:
