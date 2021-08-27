@@ -15,10 +15,12 @@ jobs:
             yarn --ignore-engines
 
   deploy:
-    executor: heroku/default
     branches:
       only:
         - dev
+
+    executor: heroku/default
+
     steps:
       - checkout
       - heroku/install
