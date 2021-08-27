@@ -5,6 +5,29 @@ const mongoose = require("mongoose");
 const app = express();
 app.use(express.json());
 
+//Models
+const { User } = require("./models/user");
+
+//===============================
+//          USERS
+//===============================
+app.post("/api/users/register", async (req, res) => {
+  const { email, password, name, lastname } = req.body;
+  let user = {};
+  user.email = email;
+  user.password = password;
+  user.name = name;
+  user.lastname = lastname;
+  let userModel = new User(user);
+  await userModel.save((err, doc) => {
+    if (err) return res.json({ success: false, err });
+    res.status(200).json({
+      success: true,
+      userdata: doc,
+    });
+  });
+});
+
 connectDB();
 
 const port = process.env.PORT || 3002;
