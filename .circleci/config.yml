@@ -16,6 +16,9 @@ jobs:
 
   deploy:
     executor: heroku/default
+    branches:
+      only:
+        - dev
     steps:
       - checkout
       - heroku/install
