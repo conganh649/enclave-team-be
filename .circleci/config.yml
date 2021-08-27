@@ -15,11 +15,6 @@ jobs:
             yarn --ignore-engines
 
   deploy:
-    filters:
-      branches:
-        only:
-          - dev
-
     executor: heroku/default
 
     steps:
@@ -33,4 +28,8 @@ workflows:
       - run_tests
   heroku_deploy:
     jobs:
-      - deploy
+      - deploy:
+          filters:
+            branches:
+              only:
+                - dev
