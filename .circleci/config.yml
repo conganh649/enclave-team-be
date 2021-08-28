@@ -29,6 +29,10 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+      - run:
+          name: Build
+          command: yarn start
+
   deploy:
     executor: heroku/default
 
