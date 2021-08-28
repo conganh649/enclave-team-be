@@ -49,11 +49,4 @@ workflows:
             branches:
               only:
                 - dev
-
-       - deploy:
-          requires:
-            - run_tests
-          filters:
-            branches:
-              only:
                 - master
