@@ -1,11 +1,9 @@
 const express = require("express");
 const connectDB = require("./connection/connection");
 const mongoose = require("mongoose");
-const config = require("./config");
 
 const app = express();
 app.use(express.json());
-console.log(config.get("mongoDB.url"));
 
 //Models
 const { User } = require("./models/user");
