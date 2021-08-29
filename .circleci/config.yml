@@ -24,6 +24,10 @@ jobs:
           command: |
             yarn --ignore-engines
 
+      - run:
+          name: Check eslint
+          command: yarn eslint server
+
       - save_cache:
           paths:
             - node_modules
@@ -34,8 +38,11 @@ jobs:
 
     steps:
       - checkout
+      - git pull origin dev
+      - git pull origin master
       - heroku/install
-      - heroku/deploy-via-git
+      - heroku/deploy-via-git:
+          branch: dev
 
 workflows:
   heroku_deploy:
@@ -49,4 +56,3 @@ workflows:
             branches:
               only:
                 - dev
-                - master
