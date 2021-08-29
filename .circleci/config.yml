@@ -39,8 +39,7 @@ jobs:
     steps:
       - checkout
       - heroku/install
-      - run:
-          command: git push heroku dev
+      - heroku/deploy-via-git dev
 
 workflows:
   heroku_deploy:
