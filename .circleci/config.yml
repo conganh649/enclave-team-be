@@ -24,6 +24,10 @@ jobs:
           command: |
             yarn --ignore-engines
 
+      - run:
+          name: Check eslint
+          command: yarn eslint server
+
       - save_cache:
           paths:
             - node_modules
@@ -49,4 +53,3 @@ workflows:
             branches:
               only:
                 - dev
-                - master
